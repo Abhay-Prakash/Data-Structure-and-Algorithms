@@ -1,0 +1,23 @@
+class Solution {
+    public String gcdOfStrings(String str1, String str2) {
+        // If concatenating the strings in both orders results in the same string
+        if (!(str1 + str2).equals(str2 + str1)) {
+            return "";
+        }
+        
+        // Find the greatest common divisor of the lengths of both strings
+        int gcdLength = gcd(str1.length(), str2.length());
+        
+        // The GCD string will be the substring of either string up to the GCD length
+        return str1.substring(0, gcdLength);
+    }
+
+    // Function to calculate the GCD of two numbers (Euclidean algorithm)
+    private int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        } else {
+            return gcd(b, a % b);
+        }
+    }
+}
